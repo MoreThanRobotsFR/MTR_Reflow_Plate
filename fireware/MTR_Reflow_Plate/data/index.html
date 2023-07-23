@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>MTR Reflow Plate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-ios.css">
+    <style> hr { border-top: 5px solid #2437e26c;} </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body class="w3-animate-opacity">
+
+    <div class="w3-card w3-blue w3-padding-small w3-center">
+        <h1>MTR Reflow Plate</h1>
+    </div>
+
+    <div class="w3-margin w3-center w3-card w3-padding-24">
+        <h3 class="w3-padding">Temperature</h3>
+        <p class="w3-xxlarge"> <span id="valeurTemperature">0</span>°C</p>
+    </div>
+
+    <div class="w3-container w3-card w3-padding-24 w3-margin w3-center w3-white">
+        <h3>Entrer les paramètres :</h3>
+        <div class="w3-margin">
+            <label for="preheatingTime" class="w3-text-blue">Preheating time</label>
+            <input class="w3-input w3-border w3-round w3-margin-bottom" type="number" id="preheatingTime" name="temps_zone_preheating" value="0">
+            <label for="preheatingTemperature" class="w3-text-blue">Température</label>
+            <input class="w3-input w3-border w3-round" type="number" id="preheatingTemperature" name="temperature_zone_preheating" min="0" max="300" value="0">
+        </div>
+        <HR class="w3-margin w3-margin-top w3-margin-bottom">
+        <div class="w3-margin">
+            <label for="recirculationTime" class="w3-text-blue">Recirculation time</label>
+            <input class="w3-input w3-border w3-round w3-margin-bottom" type="number" id="recirculationTime" name="temps_zone_recirculation" value="0">
+            <label for="recirculationTemperature" class="w3-text-blue">Température</label>
+            <input class="w3-input w3-border w3-round" type="number" id="recirculationTemperature" name="temperature_zone_recirculation" min="0" max="300" value="0">
+        </div>
+        <HR class="w3-margin w3-margin-top w3-margin-bottom">
+        <div class="w3-margin">
+            <label for="reflowTime" class="w3-text-blue">Reflow time</label>
+            <input class="w3-input w3-border w3-round w3-margin-bottom" type="number" id="reflowTime" name="temps_zone_reflow" value="0">
+            <label for="reflowTemperature" class="w3-text-blue">Température</label>
+            <input class="w3-input w3-border w3-round" type="number" id="reflowTemperature" name="temperature_zone_reflow" min="0" max="300" value="0">
+        </div>
+        <HR class="w3-margin w3-margin-top w3-margin-bottom">
+        <div class="w3-margin">
+            <label for="Z4" class="w3-text-blue">Cooling</label>
+            <input class="w3-input w3-border w3-round w3-margin-bottom" type="number" id="Z4" name="temps_zone_cooling" value="0">
+            <label for="coolingTemperature" class="w3-text-blue">Température</label>
+            <input class="w3-input w3-border w3-round" type="number" id="coolingTemperature" name="temperature_zone_cooling" min="0" max="300" value="0">
+        </div>
+        <HR class="w3-margin w3-margin-top w3-margin-bottom">
+        <button onclick="sendData()" class="w3-btn w3-large w3-ios-deep-blue w3-hover-light-blue w3-margin-top w3-round">SEND</button>
+        </div>
+
+    <div id="json-display" class="w3-margin w3-center w3-card w3-padding-24">
+        <button onclick="fetchData()" class="w3-btn w3-large w3-ios-dark-blue w3-hover-light-blue w3-margin-top w3-round" style="width:20%">GET PARAMS</button>
+    </div>
+
+    <div class="w3-margin w3-center w3-card w3-padding-24">
+        <button onclick="startButton()" class="w3-btn w3-large w3-ios-green w3-hover-light-blue w3-margin-top w3-round" style="width:20%">START</button>
+        <button onclick="stopButton()" class="w3-btn w3-large w3-ios-red w3-hover-light-blue w3-margin-top w3-round" style="width:20%">STOP</button>
+            <br><br>
+        <button onclick="manuButton()" class="w3-btn w3-large w3-ios-orange w3-hover-light-blue w3-margin-top w3-round" style="width:20%">MANU</button>
+    </div>
+
+    <div class="w3-margin w3-center w3-card w3-padding-24">
+        <button onclick="chartButton()" class="w3-btn w3-large w3-ios-pink w3-hover-light-blue w3-margin-top w3-round" style="width:20%">CHART</button>
+    </div>
+
+    <div class="w3-padding w3-center">
+        <i><a href="https://morethanrobots.com" style="text-decoration: none;">MoreThanRobots 2023</a></i>
+    </div>
+
+    
+
+</body>
+
+</html>
