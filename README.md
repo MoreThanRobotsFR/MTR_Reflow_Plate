@@ -80,7 +80,7 @@ La page index.html est la page d'accueil de l'interface web de la plaque de refu
 - **Affichage des paramètres** : Affiche les paramètres de refusion actuels.
 
 <p align="center">
-<img src="./images/index.png" alt="index.html" width="300"/>
+<img src="./images/index.png" alt="index.html" width="500"/>
 </p>
 
 ### manu.html
@@ -91,7 +91,7 @@ La page manu.html permet de contrôler la plaque de refusion en mode manuel. Ell
 - **Boutons de contrôle** : Permettent de démarrer ou d'arrêter le chauffage ou le refroidissement de la plaque de refusion.
 
 <p align="center">
-<img src="./images/manu.png" alt="manu.html" width="300"/>
+<img src="./images/manu.png" alt="manu.html" width="500"/>
 </p>
 
 ### chart.html
