@@ -99,9 +99,9 @@ La page chart.html affiche un graphique en temps réel de la température de la 
 
 - **Graphique de température** : Affiche le graphique en temps réel de la température de la plaque de refusion et de la température de consigne.
 
-<center>
+<p align="center">
 <img src="./images/chart.png" alt="chart.html" width="500"/>
-</center>
+</p>
 
 ### Conclusion
 L'interface web de la plaque de refusion MTR offre une visualisation claire de la température actuelle de la plaque, ainsi que des fonctionnalités de contrôle et de configuration pour le processus de refusion. Les pages index.html, manu.html et chart.html fournissent une interface conviviale pour interagir avec la plaque de refusion et surveiller le processus de refusion en temps réel.
