@@ -1,3 +1,3 @@
 <p align="center">
-<img src="./images/schema.png" alt="MTR Reflow Plate" width="500"/>
+<img src="./schema.png" alt="MTR Reflow Plate" width="500"/>
 </p>
