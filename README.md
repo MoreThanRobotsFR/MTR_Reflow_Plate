@@ -8,7 +8,7 @@ Le projet MTR Reflow Plate est un contrôleur de température pour une plaque de
 </p>
 
 ## Plateforme matériel
-La plateforme matérielle utilisée est l'ESP32 DevKit V1, un microcontrôleur à base de WiFi et Bluetooth intégré. Elle est utilisée en combinaison avec un capteur de température MAX31865 et un corps chauffant.
+La plateforme matérielle utilisée est l'ESP32 DevKit V1, un microcontrôleur à base de WiFi et Bluetooth intégré. Elle est utilisée en combinaison avec un capteur de température PT100 K avec un MAX31865 et un corps chauffant.
 
 <p align="center">
 <img src="./images/items.PNG" alt="ESP32, MAX31865 and heating element" width="500"/>
