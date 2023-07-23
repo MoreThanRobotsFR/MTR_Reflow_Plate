@@ -79,9 +79,9 @@ La page index.html est la page d'accueil de l'interface web de la plaque de refu
 - **Boutons de contrôle** : Permettent de démarrer ou d'arrêter le processus de refusion, ainsi que de passer en mode manuel.
 - **Affichage des paramètres** : Affiche les paramètres de refusion actuels.
 
-![image1](./images/index.png)
-
-<img src="./images/index.png" width="200">
+<center>
+<img src="./images/index.png" alt="index.html" width="300"/>
+</center>
 
 ### manu.html
 La page manu.html permet de contrôler la plaque de refusion en mode manuel. Elle affiche la température actuelle et permet de définir une température manuelle. La page comprend les sections suivantes :
@@ -90,10 +90,18 @@ La page manu.html permet de contrôler la plaque de refusion en mode manuel. Ell
 - **Définition de la température manuelle** : Permet de définir une température manuelle pour la plaque de refusion.
 - **Boutons de contrôle** : Permettent de démarrer ou d'arrêter le chauffage ou le refroidissement de la plaque de refusion.
 
+<center>
+<img src="./images/manu.png" alt="manu.html" width="300"/>
+</center>
+
 ### chart.html
 La page chart.html affiche un graphique en temps réel de la température de la plaque de refusion. Le graphique est mis à jour automatiquement toutes les quelques secondes et affiche la température actuelle ainsi que la température de consigne. La page comprend les sections suivantes :
 
 - **Graphique de température** : Affiche le graphique en temps réel de la température de la plaque de refusion et de la température de consigne.
+
+<center>
+<img src="./images/chart.png" alt="chart.html" width="500"/>
+</center>
 
 ### Conclusion
 L'interface web de la plaque de refusion MTR offre une visualisation claire de la température actuelle de la plaque, ainsi que des fonctionnalités de contrôle et de configuration pour le processus de refusion. Les pages index.html, manu.html et chart.html fournissent une interface conviviale pour interagir avec la plaque de refusion et surveiller le processus de refusion en temps réel.
