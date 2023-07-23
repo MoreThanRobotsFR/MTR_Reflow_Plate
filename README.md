@@ -79,9 +79,9 @@ La page index.html est la page d'accueil de l'interface web de la plaque de refu
 - **Boutons de contrôle** : Permettent de démarrer ou d'arrêter le processus de refusion, ainsi que de passer en mode manuel.
 - **Affichage des paramètres** : Affiche les paramètres de refusion actuels.
 
-<center>
+<p align="center">
 <img src="./images/index.png" alt="index.html" width="300"/>
-</center>
+</p>
 
 ### manu.html
 La page manu.html permet de contrôler la plaque de refusion en mode manuel. Elle affiche la température actuelle et permet de définir une température manuelle. La page comprend les sections suivantes :
@@ -90,9 +90,9 @@ La page manu.html permet de contrôler la plaque de refusion en mode manuel. Ell
 - **Définition de la température manuelle** : Permet de définir une température manuelle pour la plaque de refusion.
 - **Boutons de contrôle** : Permettent de démarrer ou d'arrêter le chauffage ou le refroidissement de la plaque de refusion.
 
-<center>
+<p align="center">
 <img src="./images/manu.png" alt="manu.html" width="300"/>
-</center>
+</p>
 
 ### chart.html
 La page chart.html affiche un graphique en temps réel de la température de la plaque de refusion. Le graphique est mis à jour automatiquement toutes les quelques secondes et affiche la température actuelle ainsi que la température de consigne. La page comprend les sections suivantes :
@@ -100,7 +100,7 @@ La page chart.html affiche un graphique en temps réel de la température de la 
 - **Graphique de température** : Affiche le graphique en temps réel de la température de la plaque de refusion et de la température de consigne.
 
 <p align="center">
-<img src="./images/chart.png" alt="chart.html" width="500"/>
+<img src="./images/chart.png" alt="chart.html" width="800"/>
 </p>
 
 ### Conclusion
