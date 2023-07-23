@@ -64,20 +64,7 @@ Voici quelques exemples d'utilisation de l'API REST :
   
   temps_zone_preheating=100000&temperature_zone_preheating=80&temps_zone_recirculation=100000&temperature_zone_recirculation=120&temps_zone_reflow=10000&temperature_zone_reflow=183&temperature_zone_cooling=23
   ```
-- Activer le mode manuel :
-  ```
-  POST /manu
-  Content-Type: application/x-www-form-urlencoded
-  
-  manuMode=1
-  ```
-- Définir la température de consigne en mode manuel :
-  ```
-  POST /manuSetTemperature
-  Content-Type: application/x-www-form-urlencoded
-  
-  manuTemperature=150
-  ```
+Pour plus d'informations sur l'utilisation de l'API REST, veuillez consulter le fichier "[fireware/data/README.md](./fireware/MTR_Reflow_Plate/data/README.md)".
 
 ## Auteur
 Ce projet a été développé par Ciciliano Altmann pour MTR (MoreThanRobots).
