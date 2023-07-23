@@ -3,8 +3,16 @@
 ## Description du projet
 Le projet MTR Reflow Plate est un contrôleur de température pour une plaque de refusion. Il permet de réguler la température de la plaque et de suivre les différentes zones de température lors du processus de refusion.
 
+<p align="center">
+<img src="./images/plate.png" alt="MTR Reflow Plate" width="500"/>
+</p>
+
 ## Plateforme matériel
 La plateforme matérielle utilisée est l'ESP32 DevKit V1, un microcontrôleur à base de WiFi et Bluetooth intégré. Elle est utilisée en combinaison avec un capteur de température MAX31865 et un corps chauffant.
+
+<p align="center">
+<img src="./images/items.png" alt="ESP32, MAX31865 and heating element" width="500"/>
+</p>
 
 ## Installation du firmware
 Le code du firmware se trouve dans le répertoire "fireware".
