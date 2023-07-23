@@ -95,13 +95,13 @@ function stopButton() {
 function manuButton() {
     window.location.href = "manu";
 
-    var manu = 2;
+    var startStopManu = 2;
     
     $.ajax({
         url: "/manu",
         method: "POST",
         data: {
-            manuMode: manu
+            manuMode: startStopManu
         }
     });
     
