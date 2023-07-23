@@ -66,6 +66,34 @@ Voici quelques exemples d'utilisation de l'API REST :
   ```
 Pour plus d'informations sur l'utilisation de l'API REST, veuillez consulter le fichier [fireware/MTR_Reflow_Plate/data/README.md](./fireware/MTR_Reflow_Plate/data/README.md).
 
+## Documentation de l'interface web
+
+### Introduction
+L'interface web de la plaque de refusion MTR permet de visualiser la température actuelle, de contrôler le mode de fonctionnement (automatique ou manuel) et de configurer les paramètres de refusion. Cette documentation présente les pages principales de l'interface : index.html, manu.html et chart.html.
+
+### index.html
+La page index.html est la page d'accueil de l'interface web de la plaque de refusion MTR. Elle permet de visualiser la température actuelle, de configurer les paramètres de refusion et de contrôler le démarrage et l'arrêt du processus de refusion. La page comprend les sections suivantes :
+
+- **Température actuelle** : Affiche la température actuelle de la plaque de refusion en degrés Celsius.
+- **Configuration des paramètres** : Permet de définir les temps et les températures de chaque zone de refusion (préchauffage, recirculation, refusion et refroidissement).
+- **Boutons de contrôle** : Permettent de démarrer ou d'arrêter le processus de refusion, ainsi que de passer en mode manuel.
+- **Affichage des paramètres** : Affiche les paramètres de refusion actuels.
+
+### manu.html
+La page manu.html permet de contrôler la plaque de refusion en mode manuel. Elle affiche la température actuelle et permet de définir une température manuelle. La page comprend les sections suivantes :
+
+- **Température actuelle** : Affiche la température actuelle de la plaque de refusion en degrés Celsius.
+- **Définition de la température manuelle** : Permet de définir une température manuelle pour la plaque de refusion.
+- **Boutons de contrôle** : Permettent de démarrer ou d'arrêter le chauffage ou le refroidissement de la plaque de refusion.
+
+### chart.html
+La page chart.html affiche un graphique en temps réel de la température de la plaque de refusion. Le graphique est mis à jour automatiquement toutes les quelques secondes et affiche la température actuelle ainsi que la température de consigne. La page comprend les sections suivantes :
+
+- **Graphique de température** : Affiche le graphique en temps réel de la température de la plaque de refusion et de la température de consigne.
+
+### Conclusion
+L'interface web de la plaque de refusion MTR offre une visualisation claire de la température actuelle de la plaque, ainsi que des fonctionnalités de contrôle et de configuration pour le processus de refusion. Les pages index.html, manu.html et chart.html fournissent une interface conviviale pour interagir avec la plaque de refusion et surveiller le processus de refusion en temps réel.
+
 ## Auteur
 Ce projet a été développé par Ciciliano Altmann pour MTR (MoreThanRobots).
 
