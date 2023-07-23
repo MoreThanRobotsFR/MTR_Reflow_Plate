@@ -81,6 +81,8 @@ La page index.html est la page d'accueil de l'interface web de la plaque de refu
 
 ![image1](./images/index.png)
 
+<img src="./images/index.png" width="200">
+
 ### manu.html
 La page manu.html permet de contrôler la plaque de refusion en mode manuel. Elle affiche la température actuelle et permet de définir une température manuelle. La page comprend les sections suivantes :
 
