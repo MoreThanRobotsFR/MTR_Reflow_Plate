@@ -55,7 +55,7 @@ Le code du firmware se trouve dans le répertoire "fireware".
 1. Téléchargez le code source du firmware depuis le répertoire "fireware".
 2. Ouvrez le fichier "MTR_Reflow_Plate/fireware/src/main.cpp" dans l'IDE Arduino.
 3. Modifiez les paramètres de température et de durée des différentes zones selon vos besoins.
-4. Si vous souhaitez personnaliser le nom du réseau et le mot de passe WiFi, modifiez les variables ssid et password dans le fichier "MTR_Reflow_Plate/fireware/src/main.cpp".
+4. Si vous souhaitez personnaliser le nom du réseau et le mot de passe WiFi, connectez vous au reseau WiFi "ESP_MTR" et accédez au portail captif en entrant l'adresse IP `192.168.X.X` dans votre navigateur Web.
 5. Compilez le code et téléchargez-le sur votre ESP32.
 
 ### Connexion WiFi avec Portail Captif et Mise à jour OTA
