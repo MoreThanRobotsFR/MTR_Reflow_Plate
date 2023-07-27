@@ -1,5 +1,15 @@
 # MTR Reflow Plate
 
+<p align="center">
+<img src="https://img.shields.io/badge/Last_commit-july_2023-yellow" />
+&nbsp;
+<img src="https://img.shields.io/badge/Build-passing-Lime" />
+&nbsp;
+<img src="https://img.shields.io/badge/Licence-MIT-orange" />
+&nbsp;
+<a href="https://bmc.link/MoreThanRobots" target="_blank"><img src="https://img.shields.io/badge/Buy_me_a_coffe-$-blue" /></a>
+</p>
+
 ## Description du projet
 Le projet MTR Reflow Plate est un contrôleur de température pour une plaque de refusion. Il permet de réguler la température de la plaque et de suivre les différentes zones de température lors du processus de refusion.
 
@@ -22,18 +32,21 @@ Le code du firmware se trouve dans le répertoire "fireware".
 - Les bibliothèques suivantes doivent être installées via le gestionnaire de bibliothèques d'Arduino :
   - Wire
   - SPI
-  - AutoPID
-  - Adafruit_MAX31865
-  - ESPAsyncWebServer
   - SPIFFS
+  - [AutoPID](https://github.com/r-downing/AutoPID)
+  - [Adafruit_MAX31865](https://github.com/adafruit/Adafruit_MAX31865)
+  - [ESPAsyncWebServer](https://github.com/me-no-dev/ESPAsyncWebServer)
+  - [AsyncElegantOTA](https://github.com/ayushsharma82/AsyncElegantOTA)
+  - [ESPConnect](https://github.com/ayushsharma82/ESPConnect)
+  - [ESPAsyncTCP](https://github.com/me-no-dev/ESPAsyncTCP) *(n'est pas inclus dans le code source du firmware, mais est nécessaire pour compiler le code.)*
 
 ### Configuration du matériel
 1. Connectez le capteur de température MAX31865 à l'ESP32 comme suit :
-   - CS du MAX31865 à la broche 5 de l'ESP32
-   - MOSI du MAX31865 à la broche 23 de l'ESP32
-   - MISO du MAX31865 à la broche 19 de l'ESP32
-   - CLK du MAX31865 à la broche 18 de l'ESP32
-2. Connectez le corps chauffant à la broche 4 de l'ESP32.
+   - CS du MAX31865 à la broche `5` 
+   - MOSI du MAX31865 à la broche `23` 
+   - MISO du MAX31865 à la broche `19` 
+   - CLK du MAX31865 à la broche `18` 
+2. Connectez le corps chauffant à la broche `4`
 
 ### Téléchargement et configuration du firmware
 1. Téléchargez le code source du firmware depuis le répertoire "fireware".
@@ -41,6 +54,10 @@ Le code du firmware se trouve dans le répertoire "fireware".
 3. Modifiez les paramètres de température et de durée des différentes zones selon vos besoins.
 4. Si vous souhaitez personnaliser le nom du réseau et le mot de passe WiFi, modifiez les variables ssid et password dans le fichier "MTR_Reflow_Plate/fireware/src/main.cpp".
 5. Compilez le code et téléchargez-le sur votre ESP32.
+
+### Connexion WiFi avec Portail Captif et Mise à jour OTA
+
+La plaque de refusion MTR utilise la bibliothèque ESPConnect.h pour gérer la connexion WiFi avec portail captif, simplifiant ainsi le processus de configuration du réseau. La bibliothèque AsyncElegantOTA.h permet quant à elle la mise à jour OTA du firmware de la plaque de refusion de manière pratique et sans fil. Ces fonctionnalités offrent une expérience utilisateur améliorée en facilitant la connexion à un réseau WiFi et en permettant la mise à jour du firmware en quelques étapes simples.
 
 ## Utilisation de l'interface utilisateur
 Lorsque le firmware est correctement chargé sur l'ESP32, vous pouvez accéder à l'interface utilisateur depuis un navigateur Web en entrant l'adresse IP attribuée à l'ESP32.
