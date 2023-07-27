@@ -14,6 +14,8 @@ License: MIT License
 #include <Adafruit_MAX31865.h>
 #include <ESPAsyncWebServer.h>
 #include <SPIFFS.h>
+#include <AsyncElegantOTA.h>
+#include <ESPConnect.h>
 
 #define RREF 430.0
 #define RNOMINAL 100.0
@@ -45,19 +47,16 @@ double temperature, outputVal, setPoint, manuSetPoint;
 int startStopManu = 0;
 bool manu = false;
 
-//Sn42Bi58 paste profile
-unsigned long preheatingTime = 60;    // Durée de la zone 1 (en millisecondes)
-unsigned long recirculationTime = 100; // Durée de la zone 2 (en millisecondes)
-unsigned long reflowTime = 90;         // Durée de la zone 3 (en millisecondes)
+// Sn42Bi58 paste profile
+unsigned long preheatingTime = 60000;     // Durée de la zone 1 (en millisecondes)
+unsigned long recirculationTime = 100000; // Durée de la zone 2 (en millisecondes)
+unsigned long reflowTime = 90000;         // Durée de la zone 3 (en millisecondes)
 unsigned long elapsedMilliseconds, startMillis;
 
 float preheatingTemperature = 90;     // Température de la zone 1 (en degrés Celsius)
 float recirculationTemperature = 120; // Température de la zone 2 (en degrés Celsius)
-float reflowTemperature = 138;        // Température de la zone 3 (en degrés Celsius)
+float reflowTemperature = 150;        // Température de la zone 3 (en degrés Celsius)
 float coolingTemperature = 23;        // Température de la zone 4 (en degrés Celsius)
-
-const char *ssid = "MTR";
-const char *password = "mtr12345";
 
 AutoPID myPID(&temperature, &setPoint, &outputVal, OUTPUT_MIN, OUTPUT_MAX, KP, KI, KD);
 Adafruit_MAX31865 thermo = Adafruit_MAX31865(SPI_CS, SPI_MOSI, SPI_MISO, SPI_CLK);
@@ -97,19 +96,16 @@ void setup()
     file = root.openNextFile();
   }
 
-  WiFi.begin(ssid, password);
-  Serial.print("Tentative de connexion...");
-
-  while (WiFi.status() != WL_CONNECTED)
+  ESPConnect.autoConnect("MTR Reflow Plate", "MTR1234");
+  if (ESPConnect.begin(&server))
   {
-    Serial.print(".");
-    delay(100);
+    Serial.println("Connected to WiFi");
+    Serial.println("IPAddress: " + WiFi.localIP().toString());
   }
-
-  Serial.println("\n");
-  Serial.println("Connexion etablie!");
-  Serial.print("Adresse IP: ");
-  Serial.println(WiFi.localIP());
+  else
+  {
+    Serial.println("Failed to connect to WiFi");
+  }
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request)
             { request->send(SPIFFS, "/index.html", "text/html"); });
@@ -150,14 +146,14 @@ void setup()
     request->send(204); });
 
   server.on("/manuStart", HTTP_GET, [](AsyncWebServerRequest *request)
-          {
+            {
   manu = true;
   request->send(204); });
 
   server.on("/manuStop", HTTP_GET, [](AsyncWebServerRequest *request)
-          {
+            {
   manu = false;
-  request->send(204); });  
+  request->send(204); });
 
   server.on("/params", HTTP_POST, [](AsyncWebServerRequest *request)
             {
@@ -251,6 +247,7 @@ void setup()
 
   request->send(200, "text/plain", json); });
 
+  AsyncElegantOTA.begin(&server); // Start ElegantOTA
   server.begin();
   Serial.println("Serveur actif!");
 }
@@ -260,21 +257,20 @@ void loop()
 
   temperature = getTemperature(RNOMINAL, RREF);
 
-  if(startStopManu == 0)
+  if (startStopManu == 0)
     digitalWrite(LED_WHITE, 1);
   else
     digitalWrite(LED_WHITE, 0);
 
-  if(startStopManu == 2)
+  if (startStopManu == 2)
     digitalWrite(LED_YELLOW, 1);
   else
     digitalWrite(LED_YELLOW, 0);
 
-  if(startStopManu == 1 || manu == true)
+  if (startStopManu == 1 || manu == true)
     digitalWrite(LED_BLUE, 1);
   else
     digitalWrite(LED_BLUE, 0);
-
 
   if (startStopManu == 1)
   {
@@ -314,7 +310,7 @@ void loop()
     startMillis = millis();
     setPoint = manuSetPoint;
 
-    if(manu)
+    if (manu)
     {
       myPID.run();
       analogWrite(OUTPUT_PIN, outputVal);
