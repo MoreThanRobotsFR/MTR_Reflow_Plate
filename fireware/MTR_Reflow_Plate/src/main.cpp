@@ -8,6 +8,7 @@ Date: 23/07/2023
 License: MIT License
 */
 
+#include <Arduino.h>
 #include <Wire.h>
 #include <SPI.h>
 #include <AutoPID.h>
@@ -27,6 +28,8 @@ License: MIT License
 #define LED_BLUE 27
 #define LED_WHITE 26
 #define LED_YELLOW 32
+
+#define BUTTON_EREASE 15
 
 #define SPI_CS 5
 #define SPI_MOSI 23
@@ -73,6 +76,7 @@ void setup()
   pinMode(LED_BLUE, OUTPUT);
   pinMode(LED_WHITE, OUTPUT);
   pinMode(LED_YELLOW, OUTPUT);
+  pinMode(BUTTON_EREASE, INPUT_PULLUP);
 
   thermo.begin(MAX31865_3WIRE); // set to 2WIRE or 4WIRE as necessary
 
@@ -96,7 +100,7 @@ void setup()
     file = root.openNextFile();
   }
 
-  ESPConnect.autoConnect("MTR Reflow Plate", "MTR1234");
+  ESPConnect.autoConnect("MTR_Reflow_Plate", "MTR1234");
   if (ESPConnect.begin(&server))
   {
     Serial.println("Connected to WiFi");
@@ -254,7 +258,6 @@ void setup()
 
 void loop()
 {
-
   temperature = getTemperature(RNOMINAL, RREF);
 
   if (startStopManu == 0)
@@ -326,6 +329,16 @@ void loop()
     setPoint = 0;
     startMillis = millis();
   }
+
+  if (digitalRead(BUTTON_EREASE) == LOW)
+  {
+    delay(3000);
+    if (digitalRead(BUTTON_EREASE) == LOW)
+    {
+      ESPConnect.erase();
+      ESP.restart();
+    }
+  }
 }
 
 float getTemperature(float R_NOMINAL, float R_REF)
@@ -343,11 +356,4 @@ bool inZone(unsigned long elapsedMilliseconds, unsigned long zoneDuration)
 void setTemperature(float temperature)
 {
   setPoint = temperature;
-}
-
-void loop2()
-{
-  temperature = getTemperature(RNOMINAL, RREF);
-  Serial.println(temperature);
-  delay(1000);
 }
