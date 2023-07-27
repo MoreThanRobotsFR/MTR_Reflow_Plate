@@ -100,7 +100,7 @@ void setup()
     file = root.openNextFile();
   }
 
-  ESPConnect.autoConnect("MTR_Reflow_Plate", "MTR1234");
+  ESPConnect.autoConnect("ESP_MTR");
   if (ESPConnect.begin(&server))
   {
     Serial.println("Connected to WiFi");

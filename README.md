@@ -38,7 +38,10 @@ Le code du firmware se trouve dans le répertoire "fireware".
   - [ESPAsyncWebServer](https://github.com/me-no-dev/ESPAsyncWebServer)
   - [AsyncElegantOTA](https://github.com/ayushsharma82/AsyncElegantOTA)
   - [ESPConnect](https://github.com/ayushsharma82/ESPConnect)
-  - [ESPAsyncTCP](https://github.com/me-no-dev/ESPAsyncTCP) *(n'est pas inclus dans le code source du firmware, mais est nécessaire pour compiler le code.)*
+  - [ESPAsyncTCP](https://github.com/me-no-dev/ESPAsyncTCP)
+  - [Adafruit_BusIO](https://github.com/adafruit/Adafruit_BusIO)
+  
+  *(ESPAsyncTCP et Adafruit_BusIO ne sont pas inclus dans le code source du firmware, mais sont nécessaire pour compiler le code.)*
 
 ### Configuration du matériel
 1. Connectez le capteur de température MAX31865 à l'ESP32 comme suit :
