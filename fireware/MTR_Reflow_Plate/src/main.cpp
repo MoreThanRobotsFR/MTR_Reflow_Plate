@@ -39,8 +39,8 @@ License: MIT License
 #define OUTPUT_MIN 0
 #define OUTPUT_MAX 255
 #define KP 100
-#define KI 0.01
-#define KD 0.001
+#define KI 0
+#define KD 0
 
 bool inZone(unsigned long elapsedMilliseconds, unsigned long zoneDuration);
 float getTemperature(float R_NOMINAL, float R_REF);
@@ -122,6 +122,27 @@ void setup()
 
   server.on("/script.js", HTTP_GET, [](AsyncWebServerRequest *request)
             { request->send(SPIFFS, "/script.js", "text/javascript"); });
+  
+  server.on("/export-data.js", HTTP_GET, [](AsyncWebServerRequest *request)
+            { request->send(SPIFFS, "/export-data.js", "text/javascript"); });
+  
+  server.on("/exporting.js", HTTP_GET, [](AsyncWebServerRequest *request)
+            { request->send(SPIFFS, "/exporting.js", "text/javascript"); });
+  
+  server.on("/highcharts.js", HTTP_GET, [](AsyncWebServerRequest *request)
+            { request->send(SPIFFS, "/highcharts.js", "text/javascript"); });
+  
+  server.on("/jquery-3.5.1.min.js", HTTP_GET, [](AsyncWebServerRequest *request)
+            { request->send(SPIFFS, "/jquery-3.5.1.min.js", "text/javascript"); });
+  
+  server.on("/offline-exporting.js", HTTP_GET, [](AsyncWebServerRequest *request)
+            { request->send(SPIFFS, "/offline-exporting.js", "text/javascript"); });
+  
+  server.on("/w3-colors-ios.css", HTTP_GET, [](AsyncWebServerRequest *request)
+            { request->send(SPIFFS, "/w3-colors-ios.css", "text/css"); });
+  
+  server.on("/w3.css", HTTP_GET, [](AsyncWebServerRequest *request)
+            { request->send(SPIFFS, "/w3.css", "text/css"); });
 
   server.on("/readTemperature", HTTP_GET, [](AsyncWebServerRequest *request)
             { request->send(200, "text/plain", String(temperature)); });
@@ -252,6 +273,7 @@ void setup()
   request->send(200, "text/plain", json); });
 
   AsyncElegantOTA.begin(&server); // Start ElegantOTA
+  
   server.begin();
   Serial.println("Serveur actif!");
 }
@@ -282,7 +304,7 @@ void loop()
 
     myPID.run();
     analogWrite(OUTPUT_PIN, outputVal);
-    digitalWrite(LED_RED, myPID.atSetPoint(1));
+    digitalWrite(LED_RED, myPID.atSetPoint(3));
 
     // Zone 1: Preheating
     if (inZone(elapsedMilliseconds, preheatingTime))
@@ -317,6 +339,7 @@ void loop()
     {
       myPID.run();
       analogWrite(OUTPUT_PIN, outputVal);
+      digitalWrite(LED_RED, myPID.atSetPoint(3));
     }
     else
     {

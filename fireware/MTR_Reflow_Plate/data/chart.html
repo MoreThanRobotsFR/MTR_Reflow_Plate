@@ -3,7 +3,11 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8" />
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" type="text/css" href="w3.css">
+    <script src="highcharts.js"></script>
+    <script src="exporting.js"></script>
+    <script src="offline-exporting.js"></script>
+    <script src="export-data.js"></script>
     <style>
         body {
             min-width: 310px;
@@ -23,8 +27,25 @@
 <body>
     <h2>MTR Reflow Plate</h2>
     <div id="chart-temperature" class="container"></div>
+    <div id="changeNbPoints">
+        <h3>Number of points</h3>
+        <select id="nbPoints" class="w3-select" name="nbPoints" onchange="changeNbPoints(this.value)">
+            <option value="50">50</option>
+            <option value="200" selected>200</option>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+            <option value="2000">2000</option>
+        </select>
+    </div>
 </body>
 <script>
+
+    var nbPoints = 200;
+
+    //une fonction qui modifie la variable nbPoints en fonction de la valeur du select
+    function changeNbPoints(value) {
+        nbPoints = value;
+    }
 
     var chartT = new Highcharts.Chart({
         chart: { renderTo: 'chart-temperature' },
@@ -43,10 +64,13 @@
                 animation: false,
                 dataLabels: { enabled: true }
             },
-            series: { color: '#059e91',
+            series: {
+                color: '#059e91',
 
-         }
+            },
+
         },
+
         xAxis: {
             type: 'datetime',
             dateTimeLabelFormats: { second: '%H:%M:%S' }
@@ -55,7 +79,7 @@
             title: { text: 'Temperature (°C)' }
         },
         credits: { enabled: false }
-        
+
     });
 
     var getData = function (url, series) {
@@ -64,7 +88,7 @@
             if (this.readyState == 4 && this.status == 200) {
                 var x = (new Date()).getTime(),
                     y = parseFloat(this.responseText);
-                if (chartT.series[series].data.length > 200) {
+                if (chartT.series[series].data.length > nbPoints) {
                     chartT.series[series].addPoint([x, y], true, true, true);
                 } else {
                     chartT.series[series].addPoint([x, y], true, false, true);
