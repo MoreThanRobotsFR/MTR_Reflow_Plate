@@ -39,8 +39,8 @@ License: MIT License
 #define OUTPUT_MIN 0
 #define OUTPUT_MAX 255
 #define KP 100
-#define KI 0
-#define KD 0
+#define KI 0.0001
+#define KD 1
 
 bool inZone(unsigned long elapsedMilliseconds, unsigned long zoneDuration);
 float getTemperature(float R_NOMINAL, float R_REF);
