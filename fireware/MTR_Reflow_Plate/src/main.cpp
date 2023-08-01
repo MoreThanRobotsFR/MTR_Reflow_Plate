@@ -1,6 +1,6 @@
 /*
 Name: MTR Reflow Plate
-Version: 1.0
+Version: 1.2.0
 Description: This program is used to control the temperature of a reflow plate.
 Plateform: ESP32 DevKit V1
 Author: Ciciliano Altmann (MTR)
@@ -11,12 +11,14 @@ License: MIT License
 #include <Arduino.h>
 #include <Wire.h>
 #include <SPI.h>
+#include <ESPmDNS.h>
 #include <AutoPID.h>
 #include <Adafruit_MAX31865.h>
 #include <ESPAsyncWebServer.h>
 #include <SPIFFS.h>
 #include <AsyncElegantOTA.h>
 #include <ESPConnect.h>
+
 
 #define RREF 430.0
 #define RNOMINAL 100.0
@@ -39,8 +41,8 @@ License: MIT License
 #define OUTPUT_MIN 0
 #define OUTPUT_MAX 255
 #define KP 100
-#define KI 0.0001
-#define KD 1
+#define KI 0.5
+#define KD 0
 
 bool inZone(unsigned long elapsedMilliseconds, unsigned long zoneDuration);
 float getTemperature(float R_NOMINAL, float R_REF);
@@ -49,6 +51,11 @@ void setTemperature(float temperature);
 double temperature, outputVal, setPoint, manuSetPoint;
 int startStopManu = 0;
 bool manu = false;
+
+// un entier aléatoire en 1000 et 9999
+
+int randNb = random(1001, 9999);
+String wifiAPName = "MTR_" + String(randNb);
 
 // Sn42Bi58 paste profile
 unsigned long preheatingTime = 60000;     // Durée de la zone 1 (en millisecondes)
@@ -100,7 +107,11 @@ void setup()
     file = root.openNextFile();
   }
 
-  ESPConnect.autoConnect("ESP_MTR");
+  ESPConnect.autoConnect(wifiAPName.c_str());
+
+  Serial.print("AP Name: ");
+  Serial.println(wifiAPName);
+
   if (ESPConnect.begin(&server))
   {
     Serial.println("Connected to WiFi");
@@ -110,6 +121,11 @@ void setup()
   {
     Serial.println("Failed to connect to WiFi");
   }
+
+  MDNS.begin("mtr-reflow-plate");
+  MDNS.addService("http", "tcp", 80);
+  MDNS.addServiceTxt("http", "tcp", "name", "MTR Reflow Plate");
+  MDNS.addServiceTxt("http", "tcp", "version", "1.2.0");
 
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request)
             { request->send(SPIFFS, "/index.html", "text/html"); });

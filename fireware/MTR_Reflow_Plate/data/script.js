@@ -38,7 +38,7 @@ function fetchData() {
     var div = document.getElementById('json-display');
     div.innerHTML = '';  // Clear the previous data
       
-    fetch('/getParams')  // Replace this URL with the actual URL to fetch your dynamic JSON.
+    fetch('/getParams') // Fetch the data from the URL
         .then(response => response.json())
         .then(data => {
             let content = `

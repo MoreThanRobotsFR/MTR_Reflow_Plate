@@ -33,6 +33,7 @@ Le code du firmware se trouve dans le répertoire "fireware".
   - Wire
   - SPI
   - SPIFFS
+  - [ESPmDNS](https://github.com/espressif/arduino-esp32/tree/master/libraries)
   - [AutoPID](https://github.com/r-downing/AutoPID)
   - [Adafruit_MAX31865](https://github.com/adafruit/Adafruit_MAX31865)
   - [ESPAsyncWebServer](https://github.com/me-no-dev/ESPAsyncWebServer)
@@ -41,7 +42,7 @@ Le code du firmware se trouve dans le répertoire "fireware".
   - [ESPAsyncTCP](https://github.com/me-no-dev/ESPAsyncTCP)
   - [Adafruit_BusIO](https://github.com/adafruit/Adafruit_BusIO)
   
-  *(ESPAsyncTCP et Adafruit_BusIO ne sont pas inclus dans le code source du firmware, mais sont nécessaire pour compiler le code.)*
+  *(`ESPAsyncTCP` et `Adafruit_BusIO` ne sont pas inclus dans le code source du firmware, mais sont nécessaire pour compiler le code. La bibliothèque `ESPmDNS` est incluse dans le package ESP32 pour Arduino IDE)*
 
 ### Configuration du matériel
 1. Connectez le capteur de température MAX31865 à l'ESP32 comme suit :
@@ -50,13 +51,20 @@ Le code du firmware se trouve dans le répertoire "fireware".
    - MISO du MAX31865 à la broche `19` 
    - CLK du MAX31865 à la broche `18` 
 2. Connectez le corps chauffant à la broche `4`
+3. Connectez le bouton reset à la broche `15` (facultatif)
+4. Connectez les leds d'état (facultatif) :
+    - LED verte à la broche `12` (dernière etape du processus de refusion)
+    - LED rouge à la broche `14` (temperature atteinte)
+    - LED bleue à la broche `27` (processus de refusion en cours)
+    - LED blanche à la broche `26` (processus de refusion en pause)
+    - LED jaune à la broche `32` (mode manuel activé)
 
 ### Téléchargement et configuration du firmware
 1. Téléchargez le code source du firmware depuis le répertoire "fireware".
 2. Ouvrez le fichier "MTR_Reflow_Plate/fireware/src/main.cpp" dans l'IDE Arduino.
 3. Modifiez les paramètres de température et de durée des différentes zones selon vos besoins.
-4. Si vous souhaitez personnaliser le nom du réseau et le mot de passe WiFi, connectez vous au reseau WiFi "ESP_MTR" et accédez au portail captif en entrant l'adresse IP `192.168.X.X` dans votre navigateur Web.
-5. Compilez le code et téléchargez-le sur votre ESP32.
+4. Compilez et téléchargez le code sur l'ESP32.
+4. Si vous souhaitez personnaliser le nom du réseau et le mot de passe WiFi, connectez vous au reseau WiFi "MTR_XXXX" et accédez au portail captif en entrant l'adresse `http://mtr-reflow-plate.local/` dans votre navigateur Web.
 
 ### Connexion WiFi avec Portail Captif et Mise à jour OTA
 
