@@ -14,14 +14,14 @@
 Le projet MTR Reflow Plate est un contrôleur de température pour une plaque de refusion. Il permet de réguler la température de la plaque et de suivre les différentes zones de température lors du processus de refusion.
 
 <p align="center">
-<img src="./images/plate.PNG" alt="MTR Reflow Plate" width="500"/>
+<img src="./Images/plate.PNG" alt="MTR Reflow Plate" width="500"/>
 </p>
 
 ## Plateforme matériel
 La plateforme matérielle utilisée est l'ESP32 DevKit V1, un microcontrôleur à base de WiFi et Bluetooth intégré. Elle est utilisée en combinaison avec un capteur de température PT100 K avec un MAX31865 et un corps chauffant.
 
 <p align="center">
-<img src="./images/items.PNG" alt="ESP32, MAX31865 and heating element" width="500"/>
+<img src="./Images/items.PNG" alt="ESP32, MAX31865 and heating element" width="500"/>
 </p>
 
 ## Installation du firmware
@@ -100,7 +100,7 @@ Voici quelques exemples d'utilisation de l'API REST :
   
   temps_zone_preheating=100000&temperature_zone_preheating=80&temps_zone_recirculation=100000&temperature_zone_recirculation=120&temps_zone_reflow=10000&temperature_zone_reflow=183&temperature_zone_cooling=23
   ```
-Pour plus d'informations sur l'utilisation de l'API REST, veuillez consulter le fichier [fireware/MTR_Reflow_Plate/data/README.md](./fireware/MTR_Reflow_Plate/data/README.md).
+Pour plus d'informations sur l'utilisation de l'API REST, veuillez consulter le fichier [Firmware/MTR_Reflow_Plate/data/README.md](./Fimrware/MTR_Reflow_Plate/data/README.md).
 
 ## Documentation de l'interface web
 
@@ -116,7 +116,7 @@ La page index.html est la page d'accueil de l'interface web de la plaque de refu
 - **Affichage des paramètres** : Affiche les paramètres de refusion actuels.
 
 <p align="center">
-<img src="./images/index.png" alt="index.html" width="500"/>
+<img src="./Images/index.png" alt="index.html" width="500"/>
 </p>
 
 ### manu.html
@@ -127,7 +127,7 @@ La page manu.html permet de contrôler la plaque de refusion en mode manuel. Ell
 - **Boutons de contrôle** : Permettent de démarrer ou d'arrêter le chauffage ou le refroidissement de la plaque de refusion.
 
 <p align="center">
-<img src="./images/manu.png" alt="manu.html" width="500"/>
+<img src="./Images/manu.png" alt="manu.html" width="500"/>
 </p>
 
 ### chart.html
@@ -136,7 +136,7 @@ La page chart.html affiche un graphique en temps réel de la température de la 
 - **Graphique de température** : Affiche le graphique en temps réel de la température de la plaque de refusion et de la température de consigne.
 
 <p align="center">
-<img src="./images/chart.png" alt="chart.html" width="800"/>
+<img src="./Images/chart.png" alt="chart.html" width="800"/>
 </p>
 
 ### Conclusion
